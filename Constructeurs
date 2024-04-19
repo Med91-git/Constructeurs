@@ -1,0 +1,58 @@
+namespace Constructeurs
+{
+    internal class Program
+    {
+
+        public class Building
+        {
+            double _buildingHeight;
+            int _buildingFloorCount;
+            double _floorMaxSize; 
+
+            public double GetSize() 
+            {
+                _buildingHeight = _floorMaxSize * _buildingFloorCount;  
+
+                return _buildingHeight;
+            }
+
+            public int GetFloorCount()
+            {
+                return _buildingFloorCount; 
+            }
+
+            private double GetFloorMaxSize() 
+            {
+
+                _floorMaxSize = _buildingHeight / _buildingFloorCount;  // taille max pour un seul etage 
+                
+                return _floorMaxSize;   
+            }
+
+            public Building(int buildingFloorCount)
+            {
+
+                _buildingFloorCount = buildingFloorCount;  
+
+            }
+
+        }
+        static void Main(string[] args)
+        {
+
+            Console.Write("Combien d'étage souhaitez-vous ? ");
+            string floorNumberUserStr = Console.ReadLine();
+
+            int floorNumberUser = int.Parse(floorNumberUserStr);
+
+            Building building = new Building(floorNumberUser);
+
+
+            int nombreEtage = building.GetFloorCount();
+
+            Console.WriteLine($"Votre batiment possède actuellement {nombreEtage} étages.");  
+            
+
+        }
+    }
+}
